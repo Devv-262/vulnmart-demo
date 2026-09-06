@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>VulnMart — Products</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; background: #faf8f4; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; padding: 24px; }
+    .p { background: white; border-radius: 10px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .p h3 { margin: 0 0 6px; font-size: 15px; }
+    .price { color: #2a5; font-weight: 700; margin-bottom: 10px; }
+    button { padding: 8px 14px; background: #2a5; color: white; border: none; border-radius: 6px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <%- include('_layout-top', {active: 'products', userName}) %>
+  <div class="grid">
+    <% products.forEach(function(p) { %>
+      <div class="p">
+        <h3><%= p.name %></h3>
+        <div class="price">$<%= p.price.toFixed(2) %></div>
+        <form action="/cart/add" method="POST">
+          <input type="hidden" name="productId" value="<%= p.id %>">
+          <input type="hidden" name="qty" value="1">
+          <button type="submit">Add to Cart</button>
+        </form>
+      </div>
+    <% }); %>
+  </div>
+</body>
+</html>

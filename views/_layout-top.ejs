@@ -1,0 +1,11 @@
+<%# shared nav bar snippet, included from each page template %>
+<div style="background:#2a5;color:white;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;font-family:system-ui,sans-serif;">
+  <div style="font-weight:700;">🛒 VulnMart</div>
+  <div style="font-size:14px;display:flex;gap:16px;align-items:center;">
+    <a href="/products" style="color:white;text-decoration:<%= active==='products'?'underline':'none' %>;">Products</a>
+    <a href="/cart" style="color:white;text-decoration:<%= active==='cart'?'underline':'none' %>;">Cart</a>
+    <a href="/orders" style="color:white;text-decoration:<%= active==='orders'?'underline':'none' %>;">My Orders</a>
+    <span>Hi, <%= userName %></span>
+    <a href="/logout" style="color:white;">Logout</a>
+  </div>
+</div>

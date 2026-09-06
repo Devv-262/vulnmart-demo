@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>VulnMart — My Orders</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; background: #faf8f4; }
+    .wrap { padding: 24px; max-width: 480px; }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; }
+    td, th { padding: 10px 12px; text-align: left; border-bottom: 1px solid #eee; font-size: 14px; }
+    a { color: #2a5; }
+  </style>
+</head>
+<body>
+  <%- include('_layout-top', {active: 'orders', userName}) %>
+  <div class="wrap">
+    <h2>My Orders</h2>
+    <table>
+      <tr><th>Order #</th><th>Total</th><th></th></tr>
+      <% orders.forEach(function(o) { %>
+        <tr><td>#<%= o.id %></td><td>$<%= o.total.toFixed(2) %></td><td><a href="/orders/<%= o.id %>">View</a></td></tr>
+      <% }); %>
+      <% if (orders.length === 0) { %><tr><td colspan="3">No orders yet.</td></tr><% } %>
+    </table>
+  </div>
+</body>
+</html>

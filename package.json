@@ -1,0 +1,16 @@
+{
+  "name": "vulnmart-demo",
+  "version": "1.0.0",
+  "description": "VulnMart — an intentionally vulnerable e-commerce demo app (SQL injection, IDOR, price tampering, coupon abuse) for the VulnShield interactive exploit sandbox.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "ejs": "^3.1.10",
+    "sql.js": "^1.11.0",
+    "body-parser": "^1.20.2"
+  }
+}

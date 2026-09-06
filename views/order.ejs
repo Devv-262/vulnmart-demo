@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>VulnMart — Order #<%= order.id %></title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; background: #faf8f4; }
+    .wrap { padding: 24px; max-width: 480px; }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+    td, th { padding: 10px 12px; text-align: left; border-bottom: 1px solid #eee; font-size: 14px; }
+    .owner { background: white; padding: 14px; border-radius: 8px; margin-bottom: 16px; font-size: 14px; }
+    .total { font-weight: 700; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <%- include('_layout-top', {active: 'orders', userName}) %>
+  <div class="wrap">
+    <h2>Order #<%= order.id %></h2>
+    <div class="owner">Placed by: <strong><%= owner ? owner.name : 'unknown' %></strong> (<%= owner ? owner.email : '' %>)</div>
+    <table>
+      <tr><th>Item</th><th>Qty</th><th>Price</th></tr>
+      <% items.forEach(function(it) { %>
+        <tr><td><%= it.name %></td><td><%= it.qty %></td><td>$<%= Number(it.price).toFixed(2) %></td></tr>
+      <% }); %>
+    </table>
+    <div class="total">Total charged: $<%= Number(order.total).toFixed(2) %></div>
+    <% if (order.coupon_applied) { %><div>Promo codes applied: <%= order.coupon_applied %></div><% } %>
+  </div>
+</body>
+</html>
