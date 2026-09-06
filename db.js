@@ -20,7 +20,9 @@ async function initDb() {
     CREATE TABLE products (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
-      price REAL NOT NULL
+      price REAL NOT NULL,
+      image_url TEXT NOT NULL,
+      category TEXT NOT NULL
     );
     CREATE TABLE orders (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,11 +45,17 @@ async function initDb() {
       ('alice@vulnmart.test', 'alice123', 'Alice Anderson'),
       ('bob@vulnmart.test', 'bob123', 'Bob Baker');
 
-    INSERT INTO products (name, price) VALUES
-      ('Wireless Mouse', 25.00),
-      ('Mechanical Keyboard', 80.00),
-      ('USB-C Hub', 35.00),
-      ('1080p Webcam', 50.00);
+    INSERT INTO products (name, price, image_url, category) VALUES
+      ('Wireless Mouse', 25.00, 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&q=80&fit=crop', 'Accessories'),
+      ('Mechanical Keyboard', 80.00, 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&q=80&fit=crop', 'Accessories'),
+      ('27" 4K Monitor', 320.00, 'https://images.unsplash.com/photo-1527443195645-1133f7f28990?w=500&q=80&fit=crop', 'Displays'),
+      ('Ultrabook Laptop', 999.00, 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80&fit=crop', 'Computers'),
+      ('Noise-Cancelling Headphones', 150.00, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80&fit=crop', 'Audio'),
+      ('Portable Bluetooth Speaker', 60.00, 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&q=80&fit=crop', 'Audio'),
+      ('Fitness Smartwatch', 220.00, 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500&q=80&fit=crop', 'Wearables'),
+      ('Instant Print Camera', 90.00, 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&q=80&fit=crop', 'Cameras'),
+      ('12.9" Tablet', 650.00, 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&q=80&fit=crop', 'Computers'),
+      ('Wireless Game Controller', 45.00, 'https://images.unsplash.com/photo-1592840496694-26d035b52b48?w=500&q=80&fit=crop', 'Accessories');
   `);
 
   // A pre-existing order belonging to Bob (user_id 2) — gives the IDOR
@@ -58,7 +66,7 @@ async function initDb() {
       (2, '[{"productId":2,"name":"Mechanical Keyboard","qty":1,"price":80}]', 80.00, NULL, '2026-09-01T10:00:00.000Z');
   `);
 
-  console.log("[db] Seeded — 2 users, 4 products, 1 order (Bob's)");
+  console.log("[db] Seeded — 2 users, 10 products, 1 order (Bob's)");
 }
 
 /** Runs a raw, unparameterized SQL string and returns rows as objects. Used

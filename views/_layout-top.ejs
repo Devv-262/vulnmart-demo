@@ -1,11 +1,11 @@
 <%# shared nav bar snippet, included from each page template %>
-<div style="background:#2a5;color:white;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;font-family:system-ui,sans-serif;">
-  <div style="font-weight:700;">🛒 VulnMart</div>
-  <div style="font-size:14px;display:flex;gap:16px;align-items:center;">
-    <a href="/products" style="color:white;text-decoration:<%= active==='products'?'underline':'none' %>;">Products</a>
-    <a href="/cart" style="color:white;text-decoration:<%= active==='cart'?'underline':'none' %>;">Cart</a>
-    <a href="/orders" style="color:white;text-decoration:<%= active==='orders'?'underline':'none' %>;">My Orders</a>
-    <span>Hi, <%= userName %></span>
-    <a href="/logout" style="color:white;">Logout</a>
+<div style="background:linear-gradient(90deg,#1b3a2f,#2a5);color:white;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;font-family:system-ui,-apple-system,sans-serif;">
+  <div style="font-weight:800;font-size:16px;">🛒 VulnMart</div>
+  <div style="font-size:13.5px;display:flex;gap:20px;align-items:center;">
+    <a href="/products" style="color:white;text-decoration:<%= active==='products'?'underline':'none' %>;opacity:<%= active==='products'?'1':'0.85' %>;">Products</a>
+    <a href="/cart" style="color:white;text-decoration:<%= active==='cart'?'underline':'none' %>;opacity:<%= active==='cart'?'1':'0.85' %>;">Cart</a>
+    <a href="/orders" style="color:white;text-decoration:<%= active==='orders'?'underline':'none' %>;opacity:<%= active==='orders'?'1':'0.85' %>;">My Orders</a>
+    <span style="opacity:0.85;">Hi, <%= userName %></span>
+    <a href="/logout" style="color:white;text-decoration:underline;">Logout</a>
   </div>
 </div>
