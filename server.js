@@ -5,6 +5,7 @@ const path = require("path");
 const db = require("./db");
 
 const loginRoutes = require("./routes/login");
+const signupRoutes = require("./routes/signup");
 const productRoutes = require("./routes/products");
 const { router: cartRoutes } = require("./routes/cart");
 const checkoutRoutes = require("./routes/checkout");
@@ -28,6 +29,7 @@ app.use(
 app.get("/", (req, res) => res.redirect(req.session.userId ? "/products" : "/login"));
 
 app.use(loginRoutes);
+app.use(signupRoutes);
 app.use(productRoutes);
 app.use(cartRoutes);
 app.use(checkoutRoutes);

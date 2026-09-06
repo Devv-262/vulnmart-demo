@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>VulnMart — Login</title>
+  <title>VulnMart — Sign Up</title>
   <style>
     * { box-sizing: border-box; }
     body { font-family: system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #1b3a2f, #2a5); display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
@@ -22,14 +22,15 @@
   <div class="card">
     <div class="logo">🛒 VulnMart</div>
     <h1>Electronics, deals you can trust*</h1>
-    <div class="sub">Sign in to continue</div>
+    <div class="sub">Create your account</div>
     <% if (error) { %><div class="error"><%= error %></div><% } %>
-    <form action="/login" method="POST">
+    <form action="/signup" method="POST">
+      <input type="text" id="name" name="name" placeholder="Full name" autocomplete="off">
       <input type="text" id="email" name="email" placeholder="Email" autocomplete="off">
       <input type="password" id="password" name="password" placeholder="Password">
-      <button type="submit" id="loginBtn">Log In</button>
+      <button type="submit" id="signupBtn">Create Account</button>
     </form>
-    <div class="switch">New here? <a href="/signup">Create an account</a></div>
+    <div class="switch">Already have an account? <a href="/login">Log in</a></div>
   </div>
 </body>
 </html>
